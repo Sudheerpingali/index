@@ -8,12 +8,21 @@
 </head>
 <body>
     <div id="root"></div>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
     <script type="text/javascript">
     const rootElement=document.getElementById('root')
-    const element=document.createElement('div')
-    element.textContent='React Js'
-    element.className='container'
-    rootElement.appendChild(element);
+    const element=React.createElement('div',{
+        // children:'REACT Js',
+        children:React.createElement('span',null,'Hello','world'),
+        className:'container',
+    })
+    console.log(element)
+    ReactDOM.render(element,rootElement)
+    // const element=document.createElement('div')
+    // element.textContent='React Js'
+    // element.className='container'
+    // rootElement.appendChild(element);
 
     </script>
 </body>
