@@ -11,18 +11,23 @@
     <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script src="https://unpkg.com/browse/prop-types@15.7.2/prop-types.js"></script>
     <script type="text/babel">
-    //creating our own custom  component message and takes props object and returns it
-    const Message=props=> <div className="message">{props.children}</div>
-    const element=(
-        <div className="container">
-            <Message>
-                Hello World
-                <Message><strong>Good Bye</strong></Message>
-                </Message>
+    //react develpped a package 'propTypes' that allows you to add run time validation of the props that are passed to our components when they render
+    const rootElement=document.getElementById('root')
+    function hello({firstname,lastname}){
+        return(
+            <div>
+                Hello {firstname} {lastname}!
                 </div>
-    )
-    ReactDOM.render(element,document.getElementById('root'))
+        )
+    }
+        // hello.propTypes={
+        //     firstname: propTypes.string,
+        //     lastname: propTypes.string,
+        // }
+        const element=<hello firstname={Mr} lastname={World} />
+        ReactDOM.render(element,rootElement)
     </script>
 </body>
 </html>
