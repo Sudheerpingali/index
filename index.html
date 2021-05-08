@@ -19,8 +19,9 @@
         const [name,setName]=React.useState(window.localStorage.getItem('name')|| '',
         )
         React.useEffect(()=>{
+            console.log('App useeffect')
             window.localStorage.setItem('name',name)
-        })
+        },[name])   //dependencies array 
         const handleChange=event=>setName(event.target.value)
         return( <div>
             <form>
@@ -31,7 +32,16 @@
             </div>
         )
     }
-    ReactDOM.render(<App />,document.getElementById('root'))
+    function Greet(){
+        const [count,setCount]=React.useState(0)
+        return(
+            <>
+            <button onClick={()=>setCount(c=>c+1)}>{count}</button>
+            <App />
+            </>
+        )
+    }
+    ReactDOM.render(<Greet />,document.getElementById('root'))
     </script>
 </body>
 </html>
