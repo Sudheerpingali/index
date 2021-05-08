@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>React Beginner</title>
 </head>
 <body>
     <div id="root"></div>
     <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
-    <script type="text/javascript">
-    const rootElement=document.getElementById('root')
-    const element=React.createElement('div',{
-        // children:'REACT Js',
-        children:React.createElement('span',null,'Hello','world'),
-        className:'container',
-    })
-    console.log(element)
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <script type="text/babel">
+    const rootElement=document.getElementById('root');
+    const element=<div className="container">React Says Hello World</div> 
+    // const element=React.createElement('div',{
+    //     // children:'REACT Js',
+    //     children:React.createElement('span',null,'Hello','world'),
+    //     className:'container',
+    // })
+    // console.log(element)
     ReactDOM.render(element,rootElement)
     // const element=document.createElement('div')
     // element.textContent='React Js'
