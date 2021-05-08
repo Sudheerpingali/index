@@ -8,36 +8,28 @@
 </head>
 <body>
     <div id="root"></div>
-    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
 
     <script type="text/babel">
-    
-    const state={eventCount: 0,username: ''}
-    function handleChange(event){
-        setState({username: event.target.value})
-    }
+    //using useState which returns an array
     function App(){
-        return(
-            <div>
-                <p>there are {state.eventCount} events</p>
-                <button onClick={()=>setState({eventCount:state.eventCount +1})}>Click me</button>
-                <p>You Typed :{state.username}</p>
-                <p>
-                    <input onChange={handleChange}/></p>
-                </div>
+        // const stateArray=React.usestate('')
+        // const name=stateArray[0]
+        // const setName=stateArray[1]
+        const [name,setName]=React.useState('')
+        const handleChange=event=>setName(event.target.value)
+        return( <div>
+            <form>
+                <label htmlFor="name">Name: </label>
+                <input onChange={handleChange} id="name" />
+            </form>
+            {name ? <strong>Hello {name}</strong>: 'Please type your name'}
+            </div>
         )
     }
-function setState(newState){    //we have a function here which will update our state variable
-    Object.assign(state, newState)
-    renderApp()
-}
-
-    function renderApp(){
-     ReactDOM.render(<App />, document.getElementById('root'))
-    }
-    renderApp()
+    ReactDOM.render(<App />,document.getElementById('root'))
     </script>
 </body>
 </html>
