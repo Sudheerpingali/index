@@ -12,8 +12,18 @@
     <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
     <script type="text/babel">
+    // const rootElement=document.getElementById('root');
+    // const Heading='Hello Children'
+    // const classname='container'
+    // const element=<div className={classname}>{Heading}</div>   //what we are giving in curly braces is the js expression and evaluates its value //
     const rootElement=document.getElementById('root');
-    const element=<div className="container">React Says Hello World</div> 
+    const children='Hello Children'
+    const className='container'
+    const props={children, className}
+    // const element=<div {...props} />
+    //ifwe want to override  one of the props in above
+    const element=<div id="app-root" {...props} className='container1' />
+    // const element=<div className="container">React Says Hello World</div> 
     // const element=React.createElement('div',{
     //     // children:'REACT Js',
     //     children:React.createElement('span',null,'Hello','world'),
@@ -23,7 +33,7 @@
     ReactDOM.render(element,rootElement)
     // const element=document.createElement('div')
     // element.textContent='React Js'
-    // element.className='container'
+    // element.className='container
     // rootElement.appendChild(element);
 
     </script>
