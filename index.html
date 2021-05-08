@@ -8,28 +8,23 @@
 </head>
 <body>
     <div id="root"></div>
-    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+
     <script type="text/babel">
-    //understand and use interpolation in JSX
-    function Charactercount({text}){
-        return(
-            <div>
-                {`the text "${text}" has`}
-                 {text.length ? <strong>{text.length}</strong> : 'No'}
-                {' characters'}
-        </div>
-        )
-    }
-    const element=(
-        // here <> refers react fragment
-        <>     
-          <Charactercount text="Hello World" />
-          <Charactercount text=""/> 
-         </>  
-    )
-    ReactDOM.render(element,document.getElementById('root'))
+   const rootElement=document.getElementById('root')
+   function tick(){
+       const time=new Date().toLocaleTimeString()  //Date().toLocaleTimeString() returns string with a language sensitive representation of the time portion of this date.
+       const element=(
+           <div>
+            {`the TIME is "${time}"`}
+            </div>
+       )
+       ReactDOM.render(element,rootElement)
+   }
+   tick()
+   setInterval(tick,1000)
     </script>
 </body>
 </html>
