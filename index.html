@@ -11,38 +11,33 @@
     <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
-    <style>
-        .box--small{
-            width: 100px;
-            height:100px
-        }
-        .box--medium{
-            width: 150px;
-            height: 150px;
-        }
-    </style>
+
     <script type="text/babel">
     
-     function Box({className='',style,...rest}){
-         return(
-             <div 
-             className={`box ${className}`}
-             style={{fontStyle:'italic',...style}}
-             {...rest}
-             />
-         )
-     }
-     const element=(
-         <div>
-            <Box className='box--small' style={{backgroundColor:'lightblue'}}>
-                Hello World
-            </Box>
-            <Box className='box--medium' style={{backgroundColor:'pink'}}>
-                Good morning
-            </Box>
-            </div>
+    const state={eventCount: 0,username: ''}
+    function handleChange(event){
+        setState({username: event.target.value})
+    }
+    function App(){
+        return(
+            <div>
+                <p>there are {state.eventCount} events</p>
+                <button onClick={()=>setState({eventCount:state.eventCount +1})}>Click me</button>
+                <p>You Typed :{state.username}</p>
+                <p>
+                    <input onChange={handleChange}/></p>
+                </div>
         )
-     ReactDOM.render(element,document.getElementById('root'))
+    }
+function setState(newState){    //we have a function here which will update our state variable
+    Object.assign(state, newState)
+    renderApp()
+}
+
+    function renderApp(){
+     ReactDOM.render(<App />, document.getElementById('root'))
+    }
+    renderApp()
     </script>
 </body>
 </html>
