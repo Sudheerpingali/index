@@ -11,20 +11,38 @@
     <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
-
+    <style>
+        .box--small{
+            width: 100px;
+            height:100px
+        }
+        .box--medium{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
     <script type="text/babel">
-   const rootElement=document.getElementById('root')
-   function tick(){
-       const time=new Date().toLocaleTimeString()  //Date().toLocaleTimeString() returns string with a language sensitive representation of the time portion of this date.
-       const element=(
-           <div>
-            {`the TIME is "${time}"`}
+    
+     function Box({className='',style,...rest}){
+         return(
+             <div 
+             className={`box ${className}`}
+             style={{fontStyle:'italic',...style}}
+             {...rest}
+             />
+         )
+     }
+     const element=(
+         <div>
+            <Box className='box--small' style={{backgroundColor:'lightblue'}}>
+                Hello World
+            </Box>
+            <Box className='box--medium' style={{backgroundColor:'pink'}}>
+                Good morning
+            </Box>
             </div>
-       )
-       ReactDOM.render(element,rootElement)
-   }
-   tick()
-   setInterval(tick,1000)
+        )
+     ReactDOM.render(element,document.getElementById('root'))
     </script>
 </body>
 </html>
